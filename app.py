@@ -8,11 +8,12 @@ st.set_page_config(page_title="PM VoC 자동 분류기", layout="wide")
 st.markdown("""
 <style>
 .stApp {background:#F8FAFC;}
-.block-container {max-width:1180px; padding-top:2rem;}
+.block-container {max-width:1180px; padding-top:3.5rem;}
 .header-box {background:#fff; border:1px solid #e6e9ee; border-radius:14px;
-  padding:28px 32px; margin-bottom:32px; box-shadow:0 1px 2px rgba(15,23,42,0.04);}
-.header-box h1 {margin:0 0 10px 0; font-size:26px; color:#0f172a;}
+  padding:20px 32px; margin-top:28px; margin-bottom:22px; box-shadow:0 1px 2px rgba(15,23,42,0.04);}
+.header-box h1 {margin:0 0 6px 0; font-size:24px; color:#0f172a;}
 .header-box p {margin:0; color:#64748b; font-size:15px;}
+.header-box .nav-caption {margin-top:8px; font-size:14px; color:#64748b;}
 div[data-testid="column"] {padding:0 8px;}
 .kpi-card {background:#fff; border:1px solid #e6e9ee; border-radius:14px;
   padding:24px 20px; text-align:center; margin-bottom:14px;
@@ -23,19 +24,20 @@ h3, .stSubheader {margin-top:36px !important; margin-bottom:10px !important; col
 section[data-testid="stSidebar"] h3 {font-size:19px; margin-bottom:4px; color:#0f172a;}
 section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {font-size:13px; color:#64748b;}
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"] {margin-bottom:10px;}
-div[data-baseweb="tab-list"] {gap:6px; margin:8px 0 32px 0; padding:6px;
-  background:#fff; border:1px solid #e6e9ee; border-radius:12px;}
-button[data-baseweb="tab"] {font-size:15px !important; font-weight:600 !important;
-  color:#475569 !important; padding:12px 22px !important; border-radius:8px !important;
-  background:transparent;}
-button[data-baseweb="tab"][aria-selected="true"] {color:#b91c1c !important;
-  background:#fef2f2 !important; border-bottom:2px solid #b91c1c;}
-div[data-baseweb="tab-highlight"] {background-color:#b91c1c !important; height:2px;}
+div[data-baseweb="tab-list"] {gap:16px; margin:4px 0 24px 0;}
+button[data-baseweb="tab"] {font-size:18px !important; font-weight:700 !important;
+  color:#475569 !important; padding:16px 26px !important; margin-right:8px !important;
+  border-radius:8px 8px 0 0 !important; white-space:nowrap !important; background:transparent;}
+button[data-baseweb="tab"][aria-selected="true"] {color:#D92D20 !important;
+  font-weight:700 !important; background-color:#FFF5F5 !important;
+  border-bottom:3px solid #D92D20 !important;}
+div[data-baseweb="tab-highlight"] {background-color:transparent !important;}
 div[data-baseweb="tab-border"] {background:transparent !important;}
 </style>
 <div class="header-box">
 <h1>PM VoC 자동 분류기</h1>
 <p>300건의 멀티채널 VoC를 유형·감정별로 분류하고, 즉시 대응 TOP3와 제품 개선 기획안 TOP2를 자동 산출합니다.</p>
+<p class="nav-caption">필터 조건에 따라 요약 지표와 분류표를 확인하고, 전체 데이터 기준의 긴급 이슈와 제품 개선안을 검토합니다.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -71,7 +73,6 @@ if user_filter != "전체":
 if sev_filter != "전체":
     filtered = filtered[filtered["severity_hint"] == sev_filter]
 
-st.caption("필터 조건에 따라 요약 지표와 분류표를 확인하고, 전체 데이터 기준의 긴급 이슈와 제품 개선안을 검토합니다.")
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
     ["요약 대시보드", "즉시 대응 TOP3", "전체 분류표", "제품 개선 기획안", "리포트/사용법"]
 )
